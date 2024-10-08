@@ -24,7 +24,7 @@
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:padding="25dp"
-            android:>
+            >
 
 
             <ImageView
@@ -84,15 +84,24 @@
                 android:layout_marginTop="32dp"
                 android:text="No tengo cuenta GSB"
                 android:textColor="@color/pearlColor"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
+            <View
+                android:layout_width="174dp"
+                android:layout_height="2dp"
+                android:background="@color/pearlColor"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="25dp"
                 android:text="Olvide mi contraseña"
                 android:textColor="@color/pearlColor"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
+
+            <View
+                android:layout_width="170dp"
+                android:layout_height="2dp"
+                android:background="@color/pearlColor"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
