@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blueColor">#002e5d</color>
+    <color name="blueChair">#00b0f0 </color>
+    <color name="greenChair">#92d050 </color>
+    <color name="pearlColor">#009383</color>
+    <color name="red">#ff0000 </color>
+    <color name="greenStatus">#4EA72E </color>
+    <color name="yellowStatus">#FDD000 </color>
+    <color name="gray">#EBEAEA</color>
+
+</resources>
