@@ -6,8 +6,12 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,39 +19,70 @@ class MainActivity : AppCompatActivity() {
     lateinit var passwordInput: EditText
     lateinit var loginBtn: Button
     lateinit var noAccountTextView: TextView
-    lateinit var forgotPasswordTextView: TextView // Añade esta línea
+    lateinit var forgotPasswordTextView: TextView
+
+    // Instancia de conexión a la base de datos (aquí debes tener tu lógica de conexión)
+    private val connectionBD = ConnectionBD()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        // Inicialización de las vistas
         usernameInput = findViewById(R.id.username_input)
         passwordInput = findViewById(R.id.password_input)
         loginBtn = findViewById(R.id.login_btn)
-
-        // Inicializa el TextView para "No tengo cuenta GSB"
         noAccountTextView = findViewById(R.id.no_gsb_account)
-
-        // Inicializa el TextView para "Olvidé mi contraseña"
         forgotPasswordTextView = findViewById(R.id.forgot_password)
 
+        // Lógica de login al hacer clic en el botón
         loginBtn.setOnClickListener {
             val username = usernameInput.text.toString()
             val password = passwordInput.text.toString()
-            Log.i("Test Credenciales", "Username: $username and Password: $password")
+
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Por favor, complete ambos campos", Toast.LENGTH_SHORT).show()
+            } else {
+                // Ejecutar la autenticación de usuario en un hilo separado
+                authenticateUser(username, password)
+            }
         }
 
-        // Agrega el listener para el TextView "No tengo cuenta GSB"
+        // Evento para "No tengo cuenta GSB"
         noAccountTextView.setOnClickListener {
-            val intent = Intent(this, Registro::class.java) // Asegúrate de que Registro sea el nombre correcto de tu actividad de registro
+            val intent = Intent(this, Registro::class.java)
             startActivity(intent)
         }
 
-        // Agrega el listener para el TextView "Olvidé mi contraseña"
+        // Evento para "Olvidé mi contraseña"
         forgotPasswordTextView.setOnClickListener {
-            val intent = Intent(this, RecuperarPass::class.java) // Cambia a la actividad de recuperación de contraseña
+            val intent = Intent(this, RecuperarPass::class.java)
             startActivity(intent)
+        }
+    }
+
+    // Método para autenticar usuario
+    private fun authenticateUser(username: String, password: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // Intentamos la conexión a la base de datos y verificar el login
+                val isAuthenticated = connectionBD.authenticate(username, password)
+
+                // Volvemos al hilo principal para mostrar el resultado en la UI
+                withContext(Dispatchers.Main) {
+                    if (isAuthenticated) {
+                        Toast.makeText(this@MainActivity, "Login exitoso", Toast.LENGTH_SHORT).show()
+                        // Aquí podrías redirigir a otra pantalla tras el login exitoso
+                    } else {
+                        Toast.makeText(this@MainActivity, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@MainActivity, "Error en la conexión: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+                Log.e("MainActivity", "Error autenticando el usuario", e)
+            }
         }
     }
 }

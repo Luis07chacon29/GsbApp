@@ -34,12 +34,15 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures{
-        viewBinding=true
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 dependencies {
+    implementation("net.sourceforge.jtds:jtds:1.3.1") // Dependencia para jTDS
+    // o, si prefieres usar el driver oficial de Microsoft, descomenta la línea de abajo
+    // implementation("com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre8")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
