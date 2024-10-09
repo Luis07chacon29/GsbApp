@@ -10,12 +10,26 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <!-- Botón de regreso en la parte superior derecha -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/back"/>
+    </RelativeLayout>
 
     <!-- Título fuera del CardView -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Para acceder ingresa tu usuario GSB"
+        android:text="Indica la siguiente información:"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_marginBottom="16dp"
@@ -39,8 +53,8 @@
             android:padding="25dp">
 
             <ImageView
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:src="@drawable/gsblatam_logo" />
 
             <EditText
@@ -62,9 +76,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/lock"
+                android:drawableLeft="@drawable/phone"
                 android:drawablePadding="8dp"
-                android:hint="Password"
+                android:hint="Número móvil"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -72,48 +86,15 @@
                 android:layout_marginTop="20dp" />
 
             <Button
-                android:id="@+id/login_btn"
+                android:id="@+id/recuperarBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="32dp"
                 android:backgroundTint="@color/blueColor"
-                android:text="Entrar"
+                android:text="Recuperar"
                 android:textColor="@color/white"
                 android:textSize="18sp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- TextView fuera del CardView -->
-    <TextView
-        android:id="@+id/no_gsb_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="No tengo cuenta GSB"
-        android:textColor="@color/pearlColor"
-        android:textSize="18sp"
-        android:layout_gravity="center"/>
-
-    <View
-        android:layout_width="174dp"
-        android:layout_height="2dp"
-        android:background="@color/pearlColor"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Olvidé mi contraseña"
-        android:textColor="@color/pearlColor"
-        android:textSize="18sp"
-        android:layout_gravity="center"/>
-
-    <View
-        android:layout_width="170dp"
-        android:layout_height="2dp"
-        android:background="@color/pearlColor"
-        android:layout_gravity="center"/>
 </LinearLayout>
-
