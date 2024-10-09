@@ -120,6 +120,7 @@
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp" />
 
+
             <EditText
                 android:id="@+id/jefe"
                 android:layout_width="match_parent"

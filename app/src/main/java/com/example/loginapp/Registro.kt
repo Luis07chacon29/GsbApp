@@ -1,12 +1,15 @@
 package com.example.loginapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.*
 
 class Registro : AppCompatActivity() {
     lateinit var name: EditText
@@ -16,14 +19,15 @@ class Registro : AppCompatActivity() {
     lateinit var number: EditText
     lateinit var jefe: EditText
     lateinit var registroBtn: Button
-    lateinit var backButton: ImageButton  // Añadir una variable para el botón de regreso
+    lateinit var backButton: ImageButton
+    private lateinit var connectionBD: ConnectionBD
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_registro)
 
-        // Inicializa los EditText y el Button utilizando los IDs definidos en el XML
+        // Inicializa los EditText y el Button
         name = findViewById(R.id.name)
         lastnameMother = findViewById(R.id.lastnameMother)
         lastnameFather = findViewById(R.id.lastnameFather)
@@ -31,11 +35,13 @@ class Registro : AppCompatActivity() {
         number = findViewById(R.id.number)
         jefe = findViewById(R.id.jefe)
         registroBtn = findViewById(R.id.registroBtn)
-        backButton = findViewById(R.id.backButton)  // Inicializa el botón de regreso
+        backButton = findViewById(R.id.backButton)
+
+        // Inicializa la conexión a la base de datos
+        connectionBD = ConnectionBD()
 
         // Configura el OnClickListener para el botón de registro
         registroBtn.setOnClickListener {
-            // Obtén los valores de los campos
             val nameValue = name.text.toString()
             val lastnameMotherValue = lastnameMother.text.toString()
             val lastnameFatherValue = lastnameFather.text.toString()
@@ -43,13 +49,27 @@ class Registro : AppCompatActivity() {
             val numberValue = number.text.toString()
             val jefeValue = jefe.text.toString()
 
-            // Imprime los valores en el log
             Log.i("Registro Info", "Nombre: $nameValue, Apellido Materno: $lastnameMotherValue, Apellido Paterno: $lastnameFatherValue, Correo: $emailValue, Número: $numberValue, Jefe: $jefeValue")
+
+            // Llama al método para registrar al usuario en un hilo de fondo
+            CoroutineScope(Dispatchers.IO).launch {
+                // Realiza el registro
+                val registrationSuccessful = connectionBD.registerUser(nameValue, lastnameMotherValue, lastnameFatherValue, emailValue, numberValue, jefeValue)
+
+                // Maneja el resultado en el hilo principal
+                withContext(Dispatchers.Main) {
+                    if (registrationSuccessful) {
+                        Toast.makeText(this@Registro, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@Registro, "Error al registrar, por favor intente de nuevo", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
 
         // Configura el OnClickListener para el botón de regreso
         backButton.setOnClickListener {
-            finish()  // Cierra la actividad actual y regresa a la anterior
+            finish() // Cierra la actividad actual
         }
     }
 }

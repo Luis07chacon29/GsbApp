@@ -15,12 +15,17 @@
         android:theme="@style/Theme.LoginApp"
         tools:targetApi="31">
 
+        <!-- Registro de la actividad de recuperación de contraseña -->
         <activity
             android:name=".RecuperarPass"
             android:exported="false" />
+
+        <!-- Registro de la actividad de registro -->
         <activity
             android:name=".Registro"
             android:exported="false" />
+
+        <!-- MainActivity con filtro para el inicio de la aplicación -->
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -43,7 +43,8 @@ dependencies {
     implementation("net.sourceforge.jtds:jtds:1.3.1") // Dependencia para jTDS
     // o, si prefieres usar el driver oficial de Microsoft, descomenta la línea de abajo
     // implementation("com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre8")
-
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
