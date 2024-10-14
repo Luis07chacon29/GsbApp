@@ -72,7 +72,12 @@ class MainActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     if (isAuthenticated) {
                         Toast.makeText(this@MainActivity, "Login exitoso", Toast.LENGTH_SHORT).show()
-                        // Aquí podrías redirigir a otra pantalla tras el login exitoso
+
+                        // Redirigir a la actividad MenuPrincipal y pasar el nombre del usuario
+                        val intent = Intent(this@MainActivity, Menuprincipal::class.java)
+                        intent.putExtra("USERNAME", username)  // Enviar el nombre de usuario
+                        startActivity(intent)
+                        finish()  // Cerrar la actividad de inicio de sesión para no volver atrás
                     } else {
                         Toast.makeText(this@MainActivity, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                     }
