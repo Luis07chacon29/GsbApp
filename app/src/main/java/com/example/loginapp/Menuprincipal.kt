@@ -43,7 +43,8 @@ class Menuprincipal : AppCompatActivity() {
                 intent.putExtra("correo_gsb", correoGsb) // Enviar el correo GSB
                 startActivityForResult(intent, REQUEST_CODE_DATOS_PERSONALES)
             } else {
-                Toast.makeText(this, "Error: El correo electrónico es nulo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error: El correo electrónico es nulo", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -55,13 +56,15 @@ class Menuprincipal : AppCompatActivity() {
             // Aquí puedes manejar la lógica de cierre de sesión
             // Por ejemplo, puedes regresar a la pantalla de login
             val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Limpiar la pila de actividades
+            intent.flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Limpiar la pila de actividades
             startActivity(intent)
             finish() // Cerrar la actividad actual
         }
 
         // Configuración del botón para abrir DocumentosContract
-        val documentosCard: CardView = findViewById(R.id.cardDocumentosContrac) // Asegúrate de tener un botón con este ID en tu layout
+        val documentosCard: CardView =
+            findViewById(R.id.cardDocumentosContrac) // Asegúrate de tener un botón con este ID en tu layout
         documentosCard.setOnClickListener {
             // Crear un Intent para abrir la actividad DocumentosContract
             val intent = Intent(this, DocumentosContrac::class.java)
@@ -76,6 +79,16 @@ class Menuprincipal : AppCompatActivity() {
             // Recuperar el correo GSB de los datos devueltos
             val correoGsb = data?.getStringExtra("correo_gsb")
             welcomeText.text = "Bienvenido, $correoGsb" // Actualiza el texto de bienvenida
+        }
+
+
+        // Configuración del botón para abrir DocumentosPer
+        val DocumentosPersonales: CardView =
+            findViewById(R.id.cardDocumentosPer) // Asegúrate de tener un botón con este ID en tu layout
+        DocumentosPersonales.setOnClickListener {
+            // Crear un Intent para abrir la actividad DocumentosContract
+            val intent = Intent(this, DocumentosPer::class.java)
+            startActivity(intent) // Iniciar la nueva actividad
         }
     }
 }

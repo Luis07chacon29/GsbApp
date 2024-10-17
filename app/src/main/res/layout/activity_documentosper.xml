@@ -1,6 +1,523 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".DocumentosPer">
 
+    <!-- Contenedor del título con fondo azul -->
+    <LinearLayout
+        android:id="@+id/titleContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blueColor"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Botón de regreso -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/menu"/>
+
+        <!-- Título centrado -->
+        <TextView
+            android:id="@+id/Titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Documentos Personales"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/titleContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <!-- Lista de Documentos -->
+    <LinearLayout
+        android:id="@+id/documentListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/titleContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <!-- Botón de regreso en la parte superior derecha -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+            android:id="@+id/tituloGenerales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center|left"
+            android:text="Generales"
+            android:textColor="@color/blueColor"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/regresar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/back_azul"/>
+
+        </RelativeLayout>
+
+
+
+        <!-- Documento 1: Identificación Oficial -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Identificación oficial"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/greenChair"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton1"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 2: Acta de nacimiento -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Acta de nacimiento"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/greenChair"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 3: Comprobante de domicilio -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Comprobante de domicilio (No mayor a 3 meses)"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/yellowStatus"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton3"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 4: Comprobante de estudios -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Comprobante de estudios"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/close"
+                    android:background="@color/red"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton4"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Documento 5: Seguro social -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Seguro Social"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/greenChair"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton6"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 6: Antecedentes no penales -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Antecedentes no penales"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/greenChair"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton7"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 7: Vacuna Covid -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Vacuna Covid"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/greenChair"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton8"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 8: Acta de matrimonio -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Acta de matrimonio"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/greenChair"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton9"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 9: Fotografía empresarial -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fotografía empresarial"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/close"
+                    android:background="@color/red"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton10"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 9: Fotografía Informal-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fotografía Informal"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/greenChair"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton11"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Documento 10: Estado de cuenta-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Estado de cuenta"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkverde"
+                    android:background="@color/greenChair"
+                    android:contentDescription="Documento completado" />
+
+                <ImageButton
+                    android:id="@+id/uploadButton12"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/repeat"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Subir archivo" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
