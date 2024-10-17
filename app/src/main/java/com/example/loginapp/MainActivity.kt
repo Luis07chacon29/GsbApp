@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
                         // Redirigir a la actividad MenuPrincipal y pasar el nombre del usuario
                         val intent = Intent(this@MainActivity, Menuprincipal::class.java)
-                        intent.putExtra("USERNAME", username)  // Enviar el nombre de usuario
+                        intent.putExtra("correo_gsb", username)  // Enviar el nombre de usuario
                         startActivity(intent)
                         finish()  // Cerrar la actividad de inicio de sesión para no volver atrás
                     } else {

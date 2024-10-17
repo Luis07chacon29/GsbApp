@@ -38,7 +38,11 @@
         <!-- Registro de la actividad del menú principal -->
         <activity
             android:name=".Menuprincipal"
-            android:exported="false" /> <!-- Cambia a "true" si necesitas que sea accesible desde otras aplicaciones -->
+            android:exported="false" />
+
+        <activity android:name=".DatosPersonales" />
+
+        <activity android:name=".DocumentosContrac"></activity>
 
     </application>
 
